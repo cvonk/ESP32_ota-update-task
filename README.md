@@ -1,5 +1,7 @@
 # ESP32 - Over The Air (OTA) Update task
 
+[![LICENSE](https://img.shields.io/github/license/jvonk/pact)](LICENSE)
+
 ## Goal
 
 [The ESP-IDF API](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/ota.html) provides a update mechanism that allows a device to update itself based on data received while the normal firmware is running.
