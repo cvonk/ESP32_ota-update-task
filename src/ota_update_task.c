@@ -149,7 +149,7 @@ ota_update_task(void * pvParameter)
                         }
                     }
                     if (_versions_match(&new_app_info, &running_app_info)) {
-                        ESP_LOGW(TAG, "No update available");
+                        ESP_LOGI(TAG, "No update available");
                         _http_cleanup(client);
                         _delete_task();
                     }
