@@ -18,6 +18,8 @@ Initially the `build/ota_update_test.bin` should be flashed using the UART.  Fro
 
 ## Usage
 
+The software relies on the master ESP-IDF SDK version v4.3-dev-472-gcf056a7d0 and accompanying tools.
+
 Clone this component in your project's `components` directory, or use it as a git submodule.
 
 Copy the `Kconfig.example` to `Kconfig` and update the configuration.
