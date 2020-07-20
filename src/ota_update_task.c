@@ -81,7 +81,7 @@ ota_update_task(void * pvParameter)
         ESP_LOGW(TAG, "Configured OTA boot partition at offset 0x%08x, but running from offset 0x%08x",
                  configured_part->address, running_part->address);
     }
-    ESP_LOGI(TAG, "Running part %s at offset 0x%08x", running_part->label, running_part->address);
+    ESP_LOGI(TAG, "Running from part \"%s\" (0x%08x)", running_part->label, running_part->address);
 
     esp_http_client_config_t config = {
         .url = CONFIG_OTA_UPDATE_FIRMWARE_URL,
@@ -101,7 +101,7 @@ ota_update_task(void * pvParameter)
     }
     esp_http_client_fetch_headers(client);
     if (esp_http_client_get_status_code(client) != 200) {
-        ESP_LOGE(TAG, "No file on server (%s), status=%d", CONFIG_OTA_UPDATE_FIRMWARE_URL, esp_http_client_get_status_code(client));
+        ESP_LOGW(TAG, "No file on server (%s), status=%d", CONFIG_OTA_UPDATE_FIRMWARE_URL, esp_http_client_get_status_code(client));
         esp_http_client_cleanup(client);
         _delete_task();
     }
