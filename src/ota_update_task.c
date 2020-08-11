@@ -177,7 +177,7 @@ ota_update_task(void * pvParameter)
 
             binary_file_length += data_read;
             size_t const pct = 100 * binary_file_length / update_part->size;
-            if (pct != last_pct) {
+            if (pct - last_pct >= 5) {
                 ESP_LOGI(TAG, "Wrote %d%% of %d kB", pct, update_part->size / 1024);
                 last_pct = pct;
             }
@@ -195,7 +195,6 @@ ota_update_task(void * pvParameter)
             break;
         }
     }
-    //ESP_LOGI(TAG, "Finished, wrote %d bytes", binary_file_length);
     if (esp_http_client_is_complete_data_received(client) != true) {
         ESP_LOGE(TAG, "Error in receiving complete file");
         _http_cleanup(client);
