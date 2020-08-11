@@ -120,6 +120,7 @@ ota_update_task(void * pvParameter)
             _http_cleanup(client);
             _delete_task();
         } else if (data_read > 0) {
+            size_t last_pct = 0;
             if (image_header_was_checked == false) {
                 esp_app_desc_t new_app_info;
                 if (data_read > sizeof(esp_image_header_t) + sizeof(esp_image_segment_header_t) + sizeof(esp_app_desc_t)) {
@@ -173,8 +174,13 @@ ota_update_task(void * pvParameter)
                 _http_cleanup(client);
                 _delete_task();
             }
+
             binary_file_length += data_read;
-            ESP_LOGI(TAG, "Wrote %d%% of %d kB", 100 * binary_file_length / update_part->size, update_part->size / 1024);
+            size_t const pct = 100 * binary_file_length / update_part->size;
+            if (pct != last_pct) {
+                ESP_LOGI(TAG, "Wrote %d%% of %d kB", pct, update_part->size / 1024);
+                last_pct = pct;
+            }
         } else if (data_read == 0) {
            // esp_http_client_read never returns negative error code, we rely on `errno` to check for underlying transport connectivity closure if any
             if (errno == ECONNRESET || errno == ENOTCONN) {
