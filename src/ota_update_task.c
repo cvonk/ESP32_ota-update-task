@@ -112,6 +112,7 @@ ota_update_task(void * pvParameter)
     int binary_file_length = 0;
     bool image_header_was_checked = false;
     esp_ota_handle_t update_handle = 0 ;  // set by esp_ota_begin(), must be freed via esp_ota_end()
+    size_t last_pct = 0;
 
     while (1) {
         int data_read = esp_http_client_read(client, ota_write_data, BUFFSIZE);
@@ -120,7 +121,6 @@ ota_update_task(void * pvParameter)
             _http_cleanup(client);
             _delete_task();
         } else if (data_read > 0) {
-            size_t last_pct = 0;
             if (image_header_was_checked == false) {
                 esp_app_desc_t new_app_info;
                 if (data_read > sizeof(esp_image_header_t) + sizeof(esp_image_segment_header_t) + sizeof(esp_app_desc_t)) {
