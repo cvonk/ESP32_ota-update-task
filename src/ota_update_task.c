@@ -70,6 +70,7 @@ _versions_match(esp_app_desc_t const * const desc1, esp_app_desc_t const * const
 void
 ota_update_task(void * pvParameter)
 {
+    char const * const image_name = (char *) pvParameter;
     ESP_LOGI(TAG, "Checking for OTA update (%s)", CONFIG_OTA_UPDATE_FIRMWARE_URL);
 
     esp_partition_t const * const configured_part = esp_ota_get_boot_partition();
@@ -82,6 +83,14 @@ ota_update_task(void * pvParameter)
                  configured_part->address, running_part->address);
     }
     ESP_LOGI(TAG, "Running from part \"%s\" (0x%08x)", running_part->label, running_part->address);
+
+    // disable OTA for debugging when running non-factory image from factory partition
+    bool const running_from_factory_part = strcmp(running_part->label, "factory") == 0;
+    bool const running_image_is_factory  = strncmp(image_name, "factory") == 0;
+    if (running_from_factory_part && !running_image_is_factory) {
+        ESP_LOGI(TAG, "OTA disabled for non-factory image");
+        _delete_task();
+    }
 
     esp_http_client_config_t config = {
         .url = CONFIG_OTA_UPDATE_FIRMWARE_URL,
