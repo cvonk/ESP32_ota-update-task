@@ -86,7 +86,7 @@ ota_update_task(void * pvParameter)
 
     // disable OTA for debugging when running non-factory image from factory partition
     bool const running_from_factory_part = strcmp(running_part->label, "factory") == 0;
-    bool const running_image_is_factory  = strncmp(image_name, "factory") == 0;
+    bool const running_image_is_factory  = strcmp(image_name, "factory") == 0;
     if (running_from_factory_part && !running_image_is_factory) {
         ESP_LOGI(TAG, "OTA disabled for non-factory image");
         _delete_task();
