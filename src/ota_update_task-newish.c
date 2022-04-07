@@ -1,13 +1,17 @@
 /**
-  * @brief Pull Over the Air (OTA) update from http server
- **/
-/* based on PD/CC0 licensed https://github.com/espressif/esp-idf/blob/master/examples/system/ota/native_ota_example/main/native_ota_example.c
-
-   This example code is in the Public Domain (or CC0 licensed, at your option.)
-   Unless required by applicable law or agreed to in writing, this
-   software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
-   CONDITIONS OF ANY KIND, either express or implied.
-*/
+ * @brief ESP32_ota_update_task - Pull Over the Air (OTA) update from http server (bleeding edge)
+ *
+ * Inspired by <https://github.com/espressif/esp-idf/blob/master/examples/system/ota/native_ota_example/main/native_ota_example.c>
+ * 
+ * Written in 2022 by ESPRESSIF and Coert Vonk 
+ * 
+ * To the extent possible under law, the author(s) have dedicated all copyright and related and
+ * neighboring rights to this software to the public domain worldwide. This software is
+ * distributed without any warranty. You should have received a copy of the CC0 Public Domain
+ * Dedication along with this software. If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
+ * 
+ * SPDX-License-Identifier: CC0-1.0
+ */
 
 #include <string.h>
 #include <freertos/FreeRTOS.h>
