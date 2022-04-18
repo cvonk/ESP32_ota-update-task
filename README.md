@@ -1,6 +1,8 @@
 # ESP32 - Over The Air (OTA) Update task
 
-[![GitHub Discussions](https://img.shields.io/github/discussions/cvonk/ESP32_ota-update-task)](https://github.com/cvonk/ESP32_ota-update-task/discussions) ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/cvonk/ESP32_ota-update-task) ![GitHub](https://img.shields.io/github/license/cvonk/ESP32_ota-update-task)
+[![GitHub Discussions](https://img.shields.io/github/discussions/cvonk/ESP32_ota-update-task)](https://github.com/cvonk/ESP32_ota-update-task/discussions)
+![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/cvonk/ESP32_ota-update-task)
+![GitHub](https://img.shields.io/github/license/cvonk/ESP32_ota-update-task)
 
 ## Goal
 
