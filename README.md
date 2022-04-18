@@ -1,6 +1,6 @@
 # ESP32 - Over The Air (OTA) Update task
 
-[![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)
+[![GitHub Discussions](https://img.shields.io/github/discussions/cvonk/ESP32_ota-update-task)](https://github.com/cvonk/ESP32_ota-update-task/discussions) ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/cvonk/ESP32_ota-update-task) ![GitHub](https://img.shields.io/github/license/cvonk/ESP32_ota-update-task)
 
 ## Goal
 
@@ -58,4 +58,4 @@ To determine if the currently running code is different as the code on the serve
 
 ## Feedback
 
-I love to hear from you. Please use the usual Github mechanisms to contact me.
+I love to hear from you. Please use the Github discussions board to contact me.
