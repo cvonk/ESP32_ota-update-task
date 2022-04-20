@@ -74,6 +74,9 @@ _versions_match(esp_app_desc_t const * const desc1, esp_app_desc_t const * const
 void
 ota_update_task(void * pvParameter)
 {
+    if (pvParameter == NULL) {
+        ESP_LOGE(TAG, "pvParameter NULL");
+    }
     char const * const image_name = (char *) pvParameter;
     ESP_LOGI(TAG, "Checking for OTA update (%s)", CONFIG_OTA_UPDATE_FIRMWARE_URL);
 
@@ -82,7 +85,7 @@ ota_update_task(void * pvParameter)
     esp_partition_t const * update_part = esp_ota_get_next_update_partition(NULL);
 
     if (configured_part != running_part) {
-        // This can happen if either the OTA boot data or preferred boot image become corrupted
+        // This can happen if either the OTA boot data or preferred boot image becomes corrupted
         ESP_LOGW(TAG, "Configured OTA boot partition at offset 0x%08x, but running from offset 0x%08x",
                  configured_part->address, running_part->address);
     }
